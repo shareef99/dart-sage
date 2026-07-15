@@ -9,6 +9,7 @@ import { ScoreKeypad } from '@/components/score-keypad';
 import { computePlayerStats } from '@/engine/x01-stats';
 import { useBotPlayer } from '@/hooks/use-bot-player';
 import { useSaveMatch } from '@/hooks/use-save-match';
+import { maybeShowInterstitialAfterMatch } from '@/services/ads';
 import { useX01Store } from '@/stores/x01-store';
 import { colors, spacing, typography } from '@/theme';
 import { dartLabel } from '@/utils/dart-label';
@@ -105,9 +106,13 @@ export default function X01Screen() {
               : `${lastLeg.checkoutScore} checkout · ${lastLeg.dartsUsed} darts`
           }
           primaryLabel="Rematch"
-          onPrimary={() => startMatch(match.config, roster)}
+          onPrimary={() => {
+            maybeShowInterstitialAfterMatch();
+            startMatch(match.config, roster);
+          }}
           secondaryLabel="Back to Menu"
           onSecondary={() => {
+            maybeShowInterstitialAfterMatch();
             endMatch();
             router.replace('/');
           }}

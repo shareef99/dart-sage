@@ -5,6 +5,7 @@ import { MatchOverlay } from '@/components/match-overlay';
 import { PressableScale } from '@/components/pressable-scale';
 import { Screen } from '@/components/screen';
 import { currentTargetLabel, targetSequenceLength } from '@/engine/around-the-clock';
+import { maybeShowInterstitialAfterMatch } from '@/services/ads';
 import { useAroundTheClockStore } from '@/stores/around-the-clock-store';
 import { colors, spacing, typography } from '@/theme';
 import type { Dart, SegmentNumber } from '@/types/darts';
@@ -99,9 +100,13 @@ export default function AroundTheClockScreen() {
           title={winnerName === 'You' ? 'You win!' : `${winnerName} wins!`}
           subtitle={`${match.history.length} darts thrown`}
           primaryLabel="Rematch"
-          onPrimary={() => startMatch(match.config)}
+          onPrimary={() => {
+            maybeShowInterstitialAfterMatch();
+            startMatch(match.config);
+          }}
           secondaryLabel="Back to Menu"
           onSecondary={() => {
+            maybeShowInterstitialAfterMatch();
             endMatch();
             router.replace('/');
           }}

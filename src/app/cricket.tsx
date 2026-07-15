@@ -6,6 +6,7 @@ import { CricketPlayerScore } from '@/components/cricket-player-score';
 import { MatchOverlay } from '@/components/match-overlay';
 import { Screen } from '@/components/screen';
 import { ScoreKeypad } from '@/components/score-keypad';
+import { maybeShowInterstitialAfterMatch } from '@/services/ads';
 import { useCricketStore } from '@/stores/cricket-store';
 import { colors, spacing, typography } from '@/theme';
 
@@ -73,9 +74,13 @@ export default function CricketScreen() {
               : `${left?.points ?? 0} — ${right?.points ?? 0} (low wins)`
           }
           primaryLabel="Rematch"
-          onPrimary={() => startMatch(match.config)}
+          onPrimary={() => {
+            maybeShowInterstitialAfterMatch();
+            startMatch(match.config);
+          }}
           secondaryLabel="Back to Menu"
           onSecondary={() => {
+            maybeShowInterstitialAfterMatch();
             endMatch();
             router.replace('/');
           }}

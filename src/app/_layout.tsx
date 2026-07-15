@@ -1,12 +1,20 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { useDatabase } from '@/hooks/use-database';
+import { initializeAds } from '@/services/ads';
 import { colors, spacing, typography } from '@/theme';
 
 export default function RootLayout() {
   const { ready, error } = useDatabase();
+
+  useEffect(() => {
+    if (ready) {
+      void initializeAds();
+    }
+  }, [ready]);
 
   if (error !== null) {
     return (
