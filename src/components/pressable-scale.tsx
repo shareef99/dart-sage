@@ -3,6 +3,8 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-na
 
 import type { PressableScaleProps } from '@/types/ui';
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 const PRESS_SPRING = { damping: 18, stiffness: 320 };
 
 export function PressableScale({ onPress, children, style, disabled }: PressableScaleProps) {
@@ -13,7 +15,7 @@ export function PressableScale({ onPress, children, style, disabled }: Pressable
   }));
 
   return (
-    <Pressable
+    <AnimatedPressable
       onPress={onPress}
       disabled={disabled}
       onPressIn={() => {
@@ -22,8 +24,9 @@ export function PressableScale({ onPress, children, style, disabled }: Pressable
       onPressOut={() => {
         scale.value = withSpring(1, PRESS_SPRING);
       }}
+      style={[style, animatedStyle]}
     >
-      <Animated.View style={[style, animatedStyle]}>{children}</Animated.View>
-    </Pressable>
+      {children}
+    </AnimatedPressable>
   );
 }

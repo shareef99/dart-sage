@@ -36,6 +36,8 @@ export default function X01Screen() {
   const lastLeg = match.completedLegs[match.completedLegs.length - 1];
   const legWinnerName =
     lastLeg === undefined ? '' : (roster[lastLeg.winnerId]?.name ?? 'Winner');
+  const matchWinnerName =
+    match.winnerId === null ? '' : (roster[match.winnerId]?.name ?? 'Winner');
 
   return (
     <Screen>
@@ -79,7 +81,9 @@ export default function X01Screen() {
 
       {match.phase === 'leg-over' ? (
         <MatchOverlay
-          title={`${legWinnerName} takes the leg!`}
+          title={
+            legWinnerName === 'You' ? 'You take the leg!' : `${legWinnerName} takes the leg!`
+          }
           subtitle={
             lastLeg === undefined
               ? ''
@@ -92,7 +96,7 @@ export default function X01Screen() {
 
       {match.phase === 'match-over' ? (
         <MatchOverlay
-          title={`${match.winnerId === null ? '' : (roster[match.winnerId]?.name ?? '')} wins!`}
+          title={matchWinnerName === 'You' ? 'You win!' : `${matchWinnerName} wins!`}
           subtitle={
             lastLeg === undefined
               ? ''
