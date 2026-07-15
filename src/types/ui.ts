@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
+import type { CricketTarget } from './cricket';
 import type { Dart } from './darts';
 
 export type PressableScaleProps = {
@@ -43,6 +44,17 @@ export type OptionChipProps = {
 export type CheckoutHintProps = {
   remaining: number;
   dartsLeft: 1 | 2 | 3;
+};
+
+export type CricketPlayerScoreProps = {
+  name: string;
+  points: number;
+  isActive: boolean;
+};
+
+export type CricketBoardProps = {
+  leftMarks: Record<CricketTarget, number>;
+  rightMarks: Record<CricketTarget, number>;
 };
 
 export type MatchOverlayProps = {

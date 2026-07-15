@@ -23,3 +23,11 @@ export type AroundTheClockState = {
 };
 
 export type AroundTheClockAction = { type: 'throw'; dart: Dart } | { type: 'undo' };
+
+export type AroundTheClockStore = {
+  match: AroundTheClockState | null;
+  startMatch: (config: AroundTheClockConfig) => void;
+  throwDart: (dart: Dart) => void;
+  undo: () => void;
+  endMatch: () => void;
+};
