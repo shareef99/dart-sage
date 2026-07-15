@@ -47,9 +47,19 @@ export default function HomeScreen() {
           onPress={() => router.push('/new-match')}
         />
         <MenuCard
+          title="Daily Challenge"
+          subtitle="Today's five finishes · keep the streak"
+          onPress={() => router.push('/daily')}
+        />
+        <MenuCard
           title="Checkout Trainer"
           subtitle="Drill your finishes · build a streak"
           onPress={() => router.push('/trainer')}
+        />
+        <MenuCard
+          title="Stats"
+          subtitle="Averages · finishes · match history"
+          onPress={() => router.push('/stats')}
         />
       </Animated.View>
     </Screen>

@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -23,11 +24,13 @@ export function ScoreKeypad({ onDart, onUndo, disabled = false }: ScoreKeypadPro
   const [multiplier, setMultiplier] = useState<Multiplier>(1);
 
   const emitSegment = (segment: SegmentNumber) => {
+    void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     onDart({ kind: 'number', segment, multiplier });
     setMultiplier(1);
   };
 
   const emitBull = (bullMultiplier: 1 | 2) => {
+    void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onDart({ kind: 'bull', multiplier: bullMultiplier });
     setMultiplier(1);
   };

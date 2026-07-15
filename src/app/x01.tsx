@@ -9,6 +9,7 @@ import { ScoreKeypad } from '@/components/score-keypad';
 import { computePlayerStats } from '@/engine/x01-stats';
 import { useBotPlayer } from '@/hooks/use-bot-player';
 import { useSaveMatch } from '@/hooks/use-save-match';
+import { useVoiceCaller } from '@/hooks/use-voice-caller';
 import { maybeShowInterstitialAfterMatch } from '@/services/ads';
 import { useX01Store } from '@/stores/x01-store';
 import { colors, spacing, typography } from '@/theme';
@@ -26,6 +27,7 @@ export default function X01Screen() {
 
   useBotPlayer();
   useSaveMatch();
+  useVoiceCaller();
 
   if (match === null) {
     return <Redirect href="/" />;

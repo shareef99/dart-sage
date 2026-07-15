@@ -46,6 +46,11 @@ export type CheckoutHintProps = {
   dartsLeft: 1 | 2 | 3;
 };
 
+export type StatTileProps = {
+  label: string;
+  value: string;
+};
+
 export type CricketPlayerScoreProps = {
   name: string;
   points: number;
