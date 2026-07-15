@@ -20,7 +20,6 @@
     },
     "android": {
       "package": "com.strived.dartsage",
-      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "backgroundColor": "#0B100D",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -37,7 +36,8 @@
           "iosAppId": "ca-app-pub-3940256099942544~1458002511"
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      "expo-build-properties"
     ]
   }
 }
