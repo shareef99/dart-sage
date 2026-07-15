@@ -8,6 +8,7 @@ import { Screen } from '@/components/screen';
 import { ScoreKeypad } from '@/components/score-keypad';
 import { computePlayerStats } from '@/engine/x01-stats';
 import { useBotPlayer } from '@/hooks/use-bot-player';
+import { useSaveMatch } from '@/hooks/use-save-match';
 import { useX01Store } from '@/stores/x01-store';
 import { colors, spacing, typography } from '@/theme';
 import { dartLabel } from '@/utils/dart-label';
@@ -23,6 +24,7 @@ export default function X01Screen() {
   const endMatch = useX01Store((state) => state.endMatch);
 
   useBotPlayer();
+  useSaveMatch();
 
   if (match === null) {
     return <Redirect href="/" />;
