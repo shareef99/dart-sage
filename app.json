@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "DartSage",
+    "slug": "dart-sage",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "dartsage",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B100D",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B100D"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.strived.dartsage"
+    },
+    "android": {
+      "package": "com.strived.dartsage",
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "backgroundColor": "#0B100D",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511"
+        }
+      ],
+      "expo-sqlite"
+    ]
+  }
+}
